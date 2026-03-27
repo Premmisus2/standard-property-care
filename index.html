@@ -75,32 +75,52 @@
      MOBILE RESPONSIVE — overlay + shared footer
   ════════════════════════════════════════════ */
   @media(max-width:767px){
-    /* Hero: 55/45 split → single column, hide image */
+    /* ── Main hero: better visibility & reduced text ── */
+    #hero-main img.object-cover              { object-position:center top !important; }
+    #hero-main > .relative.z-10             { padding-top:20px !important; padding-bottom:20px !important; }
+    #hero-main h1                            { font-size:1.75rem !important; line-height:1.06 !important; letter-spacing:-0.02em !important; }
+    #hero-main p.text-lg, #hero-main p.text-xl { font-size:0.875rem !important; line-height:1.6 !important; }
+    #hero-main .flex.flex-col.sm\:flex-row > a { padding:11px 18px !important; font-size:0.875rem !important; }
+    /* ── Nav CTA: too dominant on mobile — mobile menu has its own ── */
+    #nav-cta-wrap                            { display:none !important; }
+    /* ── Main page section headings: smaller ── */
+    section h2                               { font-size:1.6rem !important; line-height:1.12 !important; }
+    section h3                               { font-size:1.1rem !important; }
+    /* ── Section vertical padding reduction ── */
+    section.py-28                            { padding-top:48px !important; padding-bottom:48px !important; }
+    section.py-24                            { padding-top:40px !important; padding-bottom:40px !important; }
+    section.py-20                            { padding-top:36px !important; padding-bottom:36px !important; }
+    /* ── Estimate section: compact on mobile ── */
+    section#pricing .p-8, section#pricing .md\:p-10 { padding:20px !important; }
+    /* ── Gallery cards: center properly (wrap was wider than viewport) ── */
+    #gallery-stack-wrap                      { width:90vw !important; }
+    /* ── Subpages: Hero 55/45 → single column, hide image col ── */
     .spc-hero-grid      { grid-template-columns:1fr !important; min-height:auto !important; }
-    .spc-hero-txt-inner { padding:36px 20px 28px !important; }
+    .spc-hero-txt-inner { padding:28px 20px 22px !important; }
     .spc-hero-img-col   { display:none !important; }
-    /* Accordion: side-by-side → stacked */
+    /* ── Subpages: Hero heading & body text size ── */
+    .spc-hero-txt-inner h1 { font-size:clamp(1.5rem,6vw,2rem) !important; line-height:1.1 !important; }
+    .spc-hero-txt-inner p  { font-size:0.875rem !important; }
+    /* ── Accordion: side-by-side → stacked ── */
     .spc-acc-grid       { grid-template-columns:1fr !important; gap:28px !important; }
     .spc-acc-img-sticky { position:static !important; }
-    /* Why Choose Us: 3-col → 1-col */
-    .spc-why-grid       { grid-template-columns:1fr !important; gap:28px !important;
-                          max-width:380px !important; margin-left:auto !important; margin-right:auto !important; }
-    /* Before/After sliders: 2-col → 1-col */
+    /* ── Why Choose Us: 3-col → 1-col ── */
+    .spc-why-grid       { grid-template-columns:1fr !important; gap:20px !important;
+                          max-width:340px !important; margin-left:auto !important; margin-right:auto !important; }
+    /* ── Before/After sliders: 2-col → 1-col ── */
     .spc-sliders-grid   { grid-template-columns:1fr !important; }
-    /* Service areas: 2-col → 1-col */
+    /* ── Service areas: 2-col → 1-col ── */
     .spc-areas-grid     { grid-template-columns:1fr !important; }
-    /* FAQ: 2-col → 1-col */
+    /* ── FAQ: 2-col → 1-col ── */
     .spc-faq-grid       { grid-template-columns:1fr !important; gap:0 !important; }
-    /* Section vertical padding reduction */
-    .spc-sec            { padding-top:44px !important; padding-bottom:44px !important; }
-    /* Pre-footer estimate buttons: stack full-width */
+    /* ── Section vertical padding reduction (subpages) ── */
+    .spc-sec            { padding-top:36px !important; padding-bottom:36px !important; }
+    /* ── Pre-footer estimate buttons: stack full-width ── */
     .spc-est-btns       { flex-direction:column !important; align-items:stretch !important; gap:10px !important; }
-    .spc-est-btn        { width:100% !important; justify-content:center !important; }
-    /* Sticky CTA: hide description text, centre button */
-    .svc-sticky-desc    { display:none !important; }
-    #svc-sticky-cta > div { justify-content:center !important; }
-    #svc-sticky-cta-btn { flex:1; max-width:340px; justify-content:center !important; }
-    /* Overlay nav: hide middle text links (logo+CTA+back still visible) */
+    .spc-est-btn        { width:100% !important; justify-content:center !important; font-size:14px !important; padding:13px 20px !important; }
+    /* ── Double sticky borders: hide bottom bar on subpages ── */
+    #svc-sticky-cta     { display:none !important; }
+    /* ── Overlay nav: hide middle links on mobile ── */
     .svc-ov-nav-links   { display:none !important; }
   }
   /* Footer grid: 5-col → 3-col → 2-col → 1-col */
@@ -242,7 +262,7 @@
 </div>
 
 <!-- HERO -->
-<section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+<section id="hero-main" class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
   <div class="absolute inset-0 z-0">
     <img src="hero.png" alt="Standard Property Care — professional window cleaning in Victoria, BC" class="w-full h-full object-cover object-center"/>
     <div class="absolute inset-0 bg-gradient-to-b from-navy/75 via-navy/50 to-alabaster"></div>
