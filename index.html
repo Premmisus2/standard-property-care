@@ -113,17 +113,24 @@
   @media(max-width:380px){
     .sft-grid { grid-template-columns:1fr !important; }
   }
+  /* Nav hamburger / desktop-links visibility */
+  #nav-desktop-links { display:flex; }
+  #nav-hamburger     { display:none; }
+  @media(max-width:1023px){
+    #nav-desktop-links { display:none !important; }
+    #nav-hamburger     { display:flex !important; }
+  }
 </style>
 </head>
 <body class="bg-[#222222] font-sans text-white antialiased">
 
 <!-- NAV -->
-<nav class="fixed top-0 w-full z-50 glass bg-[#1A1A1A]/95 border-b border-white/10 shadow-sm">
-  <div class="max-w-7xl mx-auto px-5 py-4 flex items-center justify-between">
-    <a href="#" class="flex items-center">
-      <img src="Logo.png" alt="Standard Property Care" class="w-12 h-12 rounded-full object-cover flex-shrink-0" style="border:1.5px solid rgba(255,255,255,0.1);"/>
+<nav id="main-nav" style="position:fixed;top:0;width:100%;z-index:9000;background:rgba(26,26,26,0.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.08);">
+  <div style="max-width:1280px;margin:0 auto;padding:0 20px;height:68px;display:flex;align-items:center;justify-content:space-between;gap:16px;">
+    <a href="#" style="display:flex;align-items:center;flex-shrink:0;text-decoration:none;">
+      <img src="Logo.png" alt="Standard Property Care" style="width:44px;height:44px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,0.1);"/>
     </a>
-    <div class="hidden lg:flex items-center gap-8">
+    <div id="nav-desktop-links" style="display:flex;align-items:center;gap:6px;flex:1;justify-content:center;max-width:560px;">
       <!-- Services dropdown -->
       <div class="relative" id="nav-svc-wrap">
         <button id="nav-svc-btn" onclick="toggleNavDropdown()" class="flex items-center gap-1.5 text-sm font-medium text-slate hover:text-white transition-colors focus:outline-none">
@@ -153,83 +160,85 @@
           </a>
         </div>
       </div>
-      <a href="#process"  class="text-sm font-medium text-slate hover:text-white transition-colors">Our Process</a>
-      <a href="#about"    class="text-sm font-medium text-slate hover:text-white transition-colors">About</a>
-      <a href="#areas"    class="text-sm font-medium text-slate hover:text-white transition-colors">Service Areas</a>
-      <a href="#faq"      class="text-sm font-medium text-slate hover:text-white transition-colors">FAQ</a>
+      <a href="#process"  style="padding:8px 14px;border-radius:8px;font-family:'Inter',sans-serif;font-size:13.5px;font-weight:500;color:rgba(255,255,255,0.55);text-decoration:none;transition:color .15s;" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='rgba(255,255,255,0.55)'">Our Process</a>
+      <a href="#about"    style="padding:8px 14px;border-radius:8px;font-family:'Inter',sans-serif;font-size:13.5px;font-weight:500;color:rgba(255,255,255,0.55);text-decoration:none;transition:color .15s;" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='rgba(255,255,255,0.55)'">About</a>
+      <a href="#areas"    style="padding:8px 14px;border-radius:8px;font-family:'Inter',sans-serif;font-size:13.5px;font-weight:500;color:rgba(255,255,255,0.55);text-decoration:none;transition:color .15s;" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='rgba(255,255,255,0.55)'">Service Areas</a>
+      <a href="#faq"      style="padding:8px 14px;border-radius:8px;font-family:'Inter',sans-serif;font-size:13.5px;font-weight:500;color:rgba(255,255,255,0.55);text-decoration:none;transition:color .15s;" onmouseenter="this.style.color='#fff'" onmouseleave="this.style.color='rgba(255,255,255,0.55)'">FAQ</a>
     </div>
-    <div class="flex items-center gap-3">
+    <!-- Right: CTA + hamburger -->
+    <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
       <span id="nav-cta-wrap" style="position:relative;display:inline-flex;">
-        <a id="nav-quote-cta" href="#quote" class="btn-primary text-sm px-5 py-2.5 rounded-[8px] shadow hover:opacity-90 transition-all active:scale-95">
+        <a id="nav-quote-cta" href="#quote" class="btn-primary" style="font-size:13.5px;padding:10px 20px;border-radius:8px;font-weight:700;white-space:nowrap;">
           Get Instant Quote
         </a>
       </span>
-      <!-- Hamburger — mobile/tablet only -->
-      <button id="nav-hamburger" onclick="toggleMobileMenu()" class="lg:hidden flex flex-col justify-center items-center gap-[5px] w-10 h-10 rounded-lg border border-white/10 bg-white/05 hover:bg-white/10 transition-colors flex-shrink-0" aria-label="Open menu">
-        <span id="ham-l1" class="block w-5 h-[1.5px] bg-white/70 rounded transition-all duration-300"></span>
-        <span id="ham-l2" class="block w-5 h-[1.5px] bg-white/70 rounded transition-all duration-300"></span>
-        <span id="ham-l3" class="block w-3.5 h-[1.5px] bg-white/70 rounded transition-all duration-300"></span>
+      <!-- Hamburger button — shown on mobile via CSS, hidden on desktop -->
+      <button id="nav-hamburger" onclick="toggleMobileMenu()" aria-label="Open menu"
+        style="display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:42px;height:42px;border-radius:8px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.05);cursor:pointer;flex-shrink:0;">
+        <span style="display:block;width:20px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span>
+        <span style="display:block;width:20px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span>
+        <span style="display:block;width:14px;height:2px;background:rgba(255,255,255,0.8);border-radius:2px;"></span>
       </button>
     </div>
   </div>
 </nav>
 
 <!-- ═══════════════════════════════════
-     MOBILE MENU OVERLAY
+     MOBILE MENU — pure inline styles, no Tailwind responsive classes
 ════════════════════════════════════ -->
-<div id="mobile-menu" style="display:none;" class="fixed inset-0 z-[9998] flex flex-col bg-[#111111] overflow-y-auto">
+<div id="mobile-menu" style="display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:9999;background:#111111;overflow-y:auto;flex-direction:column;">
   <!-- Header -->
-  <div class="flex items-center justify-between px-5 py-4 border-b border-white/10 flex-shrink-0">
-    <img src="Logo.png" alt="Standard Property Care" class="w-10 h-10 rounded-full object-cover" style="border:1.5px solid rgba(255,255,255,0.1);"/>
-    <button onclick="toggleMobileMenu()" class="w-10 h-10 flex items-center justify-center rounded-lg border border-white/10 text-white/50 hover:text-white hover:bg-white/05 transition-all">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:1px solid rgba(255,255,255,0.1);position:sticky;top:0;background:#111111;z-index:1;">
+    <img src="Logo.png" alt="Standard Property Care" style="width:40px;height:40px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,0.1);"/>
+    <button onclick="toggleMobileMenu()" style="width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:8px;border:1px solid rgba(255,255,255,0.12);background:transparent;cursor:pointer;color:rgba(255,255,255,0.6);">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
     </button>
   </div>
-  <!-- Links -->
-  <nav class="flex flex-col px-4 py-6 gap-1 flex-1">
-    <p class="px-4 text-[10px] font-bold uppercase tracking-widest text-white/30 mb-3">Navigation</p>
-    <a href="#services" onclick="toggleMobileMenu()" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-white/70 hover:text-white hover:bg-white/06 text-[15px] font-medium transition-all">
-      <span class="material-symbols-outlined text-base text-white/30" style="font-variation-settings:'FILL' 1">cleaning_services</span>Services
+  <!-- Nav links -->
+  <div style="padding:20px 16px;display:flex;flex-direction:column;gap:2px;">
+    <p style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.28);padding:4px 12px 10px;">Navigation</p>
+    <a href="#services" onclick="toggleMobileMenu()" style="display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:10px;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,0.75);text-decoration:none;transition:background .15s;" onmouseenter="this.style.background='rgba(255,255,255,0.07)'" onmouseleave="this.style.background='transparent'">
+      <span class="material-symbols-outlined" style="font-size:18px;color:rgba(255,255,255,0.3);font-variation-settings:'FILL' 1">cleaning_services</span>Services
     </a>
-    <a href="#process" onclick="toggleMobileMenu()" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-white/70 hover:text-white hover:bg-white/06 text-[15px] font-medium transition-all">
-      <span class="material-symbols-outlined text-base text-white/30" style="font-variation-settings:'FILL' 1">timeline</span>Our Process
+    <a href="#process" onclick="toggleMobileMenu()" style="display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:10px;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,0.75);text-decoration:none;transition:background .15s;" onmouseenter="this.style.background='rgba(255,255,255,0.07)'" onmouseleave="this.style.background='transparent'">
+      <span class="material-symbols-outlined" style="font-size:18px;color:rgba(255,255,255,0.3);font-variation-settings:'FILL' 1">timeline</span>Our Process
     </a>
-    <a href="#about" onclick="toggleMobileMenu()" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-white/70 hover:text-white hover:bg-white/06 text-[15px] font-medium transition-all">
-      <span class="material-symbols-outlined text-base text-white/30" style="font-variation-settings:'FILL' 1">groups</span>About Us
+    <a href="#about" onclick="toggleMobileMenu()" style="display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:10px;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,0.75);text-decoration:none;transition:background .15s;" onmouseenter="this.style.background='rgba(255,255,255,0.07)'" onmouseleave="this.style.background='transparent'">
+      <span class="material-symbols-outlined" style="font-size:18px;color:rgba(255,255,255,0.3);font-variation-settings:'FILL' 1">groups</span>About Us
     </a>
-    <a href="#areas" onclick="toggleMobileMenu()" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-white/70 hover:text-white hover:bg-white/06 text-[15px] font-medium transition-all">
-      <span class="material-symbols-outlined text-base text-white/30" style="font-variation-settings:'FILL' 1">location_on</span>Service Areas
+    <a href="#areas" onclick="toggleMobileMenu()" style="display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:10px;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,0.75);text-decoration:none;transition:background .15s;" onmouseenter="this.style.background='rgba(255,255,255,0.07)'" onmouseleave="this.style.background='transparent'">
+      <span class="material-symbols-outlined" style="font-size:18px;color:rgba(255,255,255,0.3);font-variation-settings:'FILL' 1">location_on</span>Service Areas
     </a>
-    <a href="#faq" onclick="toggleMobileMenu()" class="flex items-center gap-3 px-4 py-3.5 rounded-xl text-white/70 hover:text-white hover:bg-white/06 text-[15px] font-medium transition-all">
-      <span class="material-symbols-outlined text-base text-white/30" style="font-variation-settings:'FILL' 1">help</span>FAQ
-    </a>
-
-    <div class="border-t border-white/08 my-4"></div>
-    <p class="px-4 text-[10px] font-bold uppercase tracking-widest text-white/30 mb-3">Our Services</p>
-    <a href="#" onclick="openSvcPage('gutter-cleaning');toggleMobileMenu();return false;" class="flex items-center gap-3 px-4 py-3 rounded-xl text-white/60 hover:text-white hover:bg-white/06 text-[14px] font-medium transition-all">
-      <span class="material-symbols-outlined text-sm text-white/25" style="font-variation-settings:'FILL' 1">water_drop</span>Gutter Cleaning
-    </a>
-    <a href="#" onclick="openSvcPage('window-washing');toggleMobileMenu();return false;" class="flex items-center gap-3 px-4 py-3 rounded-xl text-white/60 hover:text-white hover:bg-white/06 text-[14px] font-medium transition-all">
-      <span class="material-symbols-outlined text-sm text-white/25" style="font-variation-settings:'FILL' 1">window</span>Window Washing
-    </a>
-    <a href="#" onclick="openSvcPage('roof-moss-removal');toggleMobileMenu();return false;" class="flex items-center gap-3 px-4 py-3 rounded-xl text-white/60 hover:text-white hover:bg-white/06 text-[14px] font-medium transition-all">
-      <span class="material-symbols-outlined text-sm text-white/25" style="font-variation-settings:'FILL' 1">roofing</span>Roof Moss Removal
-    </a>
-    <a href="#" onclick="openSvcPage('gutter-guards');toggleMobileMenu();return false;" class="flex items-center gap-3 px-4 py-3 rounded-xl text-white/60 hover:text-white hover:bg-white/06 text-[14px] font-medium transition-all">
-      <span class="material-symbols-outlined text-sm text-white/25" style="font-variation-settings:'FILL' 1">shield</span>Gutter Guards
-    </a>
-    <a href="#" onclick="openSvcPage('led-lights');toggleMobileMenu();return false;" class="flex items-center gap-3 px-4 py-3 rounded-xl text-white/60 hover:text-white hover:bg-white/06 text-[14px] font-medium transition-all">
-      <span class="material-symbols-outlined text-sm text-white/25" style="font-variation-settings:'FILL' 1">light_mode</span>Permanent LED Lights
+    <a href="#faq" onclick="toggleMobileMenu()" style="display:flex;align-items:center;gap:12px;padding:13px 14px;border-radius:10px;font-family:'Inter',sans-serif;font-size:15px;font-weight:500;color:rgba(255,255,255,0.75);text-decoration:none;transition:background .15s;" onmouseenter="this.style.background='rgba(255,255,255,0.07)'" onmouseleave="this.style.background='transparent'">
+      <span class="material-symbols-outlined" style="font-size:18px;color:rgba(255,255,255,0.3);font-variation-settings:'FILL' 1">help</span>FAQ
     </a>
 
-    <!-- CTA -->
-    <div class="mt-6 px-0">
-      <a href="#quote" onclick="toggleMobileMenu()" class="btn-primary flex items-center justify-center gap-2 w-full py-4 rounded-[10px] text-base font-bold shadow-xl">
-        <span class="material-symbols-outlined text-base">bolt</span>Get Your Free Quote
+    <div style="border-top:1px solid rgba(255,255,255,0.08);margin:12px 0;"></div>
+    <p style="font-family:'Inter',sans-serif;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,0.28);padding:4px 12px 10px;">Our Services</p>
+    <a href="#" onclick="openSvcPage('gutter-cleaning');toggleMobileMenu();return false;" style="display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,0.6);text-decoration:none;transition:background .15s;" onmouseenter="this.style.background='rgba(255,255,255,0.07)'" onmouseleave="this.style.background='transparent'">
+      <span class="material-symbols-outlined" style="font-size:16px;color:rgba(255,255,255,0.25);font-variation-settings:'FILL' 1">water_drop</span>Gutter Cleaning
+    </a>
+    <a href="#" onclick="openSvcPage('window-washing');toggleMobileMenu();return false;" style="display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,0.6);text-decoration:none;transition:background .15s;" onmouseenter="this.style.background='rgba(255,255,255,0.07)'" onmouseleave="this.style.background='transparent'">
+      <span class="material-symbols-outlined" style="font-size:16px;color:rgba(255,255,255,0.25);font-variation-settings:'FILL' 1">window</span>Window Washing
+    </a>
+    <a href="#" onclick="openSvcPage('roof-moss-removal');toggleMobileMenu();return false;" style="display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,0.6);text-decoration:none;transition:background .15s;" onmouseenter="this.style.background='rgba(255,255,255,0.07)'" onmouseleave="this.style.background='transparent'">
+      <span class="material-symbols-outlined" style="font-size:16px;color:rgba(255,255,255,0.25);font-variation-settings:'FILL' 1">roofing</span>Roof Moss Removal
+    </a>
+    <a href="#" onclick="openSvcPage('gutter-guards');toggleMobileMenu();return false;" style="display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,0.6);text-decoration:none;transition:background .15s;" onmouseenter="this.style.background='rgba(255,255,255,0.07)'" onmouseleave="this.style.background='transparent'">
+      <span class="material-symbols-outlined" style="font-size:16px;color:rgba(255,255,255,0.25);font-variation-settings:'FILL' 1">shield</span>Gutter Guards
+    </a>
+    <a href="#" onclick="openSvcPage('led-lights');toggleMobileMenu();return false;" style="display:flex;align-items:center;gap:12px;padding:11px 14px;border-radius:10px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;color:rgba(255,255,255,0.6);text-decoration:none;transition:background .15s;" onmouseenter="this.style.background='rgba(255,255,255,0.07)'" onmouseleave="this.style.background='transparent'">
+      <span class="material-symbols-outlined" style="font-size:16px;color:rgba(255,255,255,0.25);font-variation-settings:'FILL' 1">light_mode</span>Permanent LED Lights
+    </a>
+
+    <!-- CTA button -->
+    <div style="margin-top:24px;padding:0 2px;">
+      <a href="#quote" onclick="toggleMobileMenu()" style="display:flex;align-items:center;justify-content:center;gap:8px;background:#ffffff;color:#111111;font-family:'Inter',sans-serif;font-size:15px;font-weight:700;padding:15px 24px;border-radius:10px;text-decoration:none;width:100%;box-sizing:border-box;">
+        <span class="material-symbols-outlined" style="font-size:17px;line-height:1;">bolt</span>Get Your Free Quote
       </a>
-      <p class="text-center text-white/30 text-xs mt-3">Free · No obligation · Same-day response</p>
+      <p style="text-align:center;font-family:'Inter',sans-serif;font-size:12px;color:rgba(255,255,255,0.28);margin:10px 0 0;">Free · No obligation · Same-day response</p>
     </div>
-  </nav>
+  </div>
 </div>
 
 <!-- HERO -->
