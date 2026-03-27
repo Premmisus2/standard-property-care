@@ -75,53 +75,102 @@
      MOBILE RESPONSIVE — overlay + shared footer
   ════════════════════════════════════════════ */
   @media(max-width:767px){
-    /* ── Main hero: better visibility & reduced text ── */
+    /* ══════════════════════════════════════════
+       MAIN PAGE — HERO
+    ══════════════════════════════════════════ */
     #hero-main img.object-cover              { object-position:center top !important; }
     #hero-main > .relative.z-10             { padding-top:20px !important; padding-bottom:20px !important; }
     #hero-main h1                            { font-size:1.75rem !important; line-height:1.06 !important; letter-spacing:-0.02em !important; }
     #hero-main p.text-lg, #hero-main p.text-xl { font-size:0.875rem !important; line-height:1.6 !important; }
     #hero-main .flex.flex-col.sm\:flex-row > a { padding:11px 18px !important; font-size:0.875rem !important; }
-    /* ── Nav CTA: too dominant on mobile — mobile menu has its own ── */
+
+    /* ══════════════════════════════════════════
+       MAIN PAGE — NAV & HEADINGS
+    ══════════════════════════════════════════ */
     #nav-cta-wrap                            { display:none !important; }
-    /* ── Main page section headings: smaller ── */
-    section h2                               { font-size:1.6rem !important; line-height:1.12 !important; }
-    section h3                               { font-size:1.1rem !important; }
-    /* ── Section vertical padding reduction ── */
+    section h2                               { font-size:1.55rem !important; line-height:1.12 !important; }
+    section h3                               { font-size:1.05rem !important; }
+
+    /* ══════════════════════════════════════════
+       MAIN PAGE — SECTION PADDING
+    ══════════════════════════════════════════ */
     section.py-28                            { padding-top:48px !important; padding-bottom:48px !important; }
     section.py-24                            { padding-top:40px !important; padding-bottom:40px !important; }
     section.py-20                            { padding-top:36px !important; padding-bottom:36px !important; }
-    /* ── Estimate section: compact on mobile ── */
-    section#pricing .p-8, section#pricing .md\:p-10 { padding:20px !important; }
-    /* ── Gallery cards: center properly (wrap was wider than viewport) ── */
+
+    /* ══════════════════════════════════════════
+       MAIN PAGE — SERVICE STICKY CARDS
+       (explicit, not relying on Tailwind md:)
+    ══════════════════════════════════════════ */
+    .svc-card                                { flex-direction:column !important; }
+    .svc-card > div.relative                 { width:100% !important; height:200px !important; }
+    .svc-content                             { padding:20px !important; }
+    .svc-content ul.grid                     { grid-template-columns:1fr !important; gap:5px 0 !important; }
+    .svc-content > a                         { font-size:13px !important; padding:9px 16px !important; }
+
+    /* ══════════════════════════════════════════
+       MAIN PAGE — ABOUT BENTO GRID
+    ══════════════════════════════════════════ */
+    .about-photo                             { min-height:260px !important; }
+    .about-card.about-quote                  { padding:1.5rem !important; }
+    .about-card.about-quote h2               { font-size:1.2rem !important; }
+
+    /* ══════════════════════════════════════════
+       MAIN PAGE — GALLERY SCROLL STACK
+    ══════════════════════════════════════════ */
+    #gallery-section                         { height:350vh !important; }
     #gallery-stack-wrap                      { width:90vw !important; }
-    /* ── Subpages: Hero 55/45 → single column, hide image col ── */
-    .spc-hero-grid      { grid-template-columns:1fr !important; min-height:auto !important; }
-    .spc-hero-txt-inner { padding:28px 20px 22px !important; }
-    .spc-hero-img-col   { display:none !important; }
-    /* ── Subpages: Hero heading & body text size ── */
-    .spc-hero-txt-inner h1 { font-size:clamp(1.5rem,6vw,2rem) !important; line-height:1.1 !important; }
-    .spc-hero-txt-inner p  { font-size:0.875rem !important; }
-    /* ── Accordion: side-by-side → stacked ── */
-    .spc-acc-grid       { grid-template-columns:1fr !important; gap:28px !important; }
-    .spc-acc-img-sticky { position:static !important; }
-    /* ── Why Choose Us: 3-col → 1-col ── */
-    .spc-why-grid       { grid-template-columns:1fr !important; gap:20px !important;
-                          max-width:340px !important; margin-left:auto !important; margin-right:auto !important; }
-    /* ── Before/After sliders: 2-col → 1-col ── */
-    .spc-sliders-grid   { grid-template-columns:1fr !important; }
-    /* ── Service areas: 2-col → 1-col ── */
-    .spc-areas-grid     { grid-template-columns:1fr !important; }
-    /* ── FAQ: 2-col → 1-col ── */
-    .spc-faq-grid       { grid-template-columns:1fr !important; gap:0 !important; }
-    /* ── Section vertical padding reduction (subpages) ── */
-    .spc-sec            { padding-top:36px !important; padding-bottom:36px !important; }
-    /* ── Pre-footer estimate buttons: stack full-width ── */
-    .spc-est-btns       { flex-direction:column !important; align-items:stretch !important; gap:10px !important; }
-    .spc-est-btn        { width:100% !important; justify-content:center !important; font-size:14px !important; padding:13px 20px !important; }
-    /* ── Double sticky borders: hide bottom bar on subpages ── */
-    #svc-sticky-cta     { display:none !important; }
-    /* ── Overlay nav: hide middle links on mobile ── */
-    .svc-ov-nav-links   { display:none !important; }
+
+    /* ══════════════════════════════════════════
+       MAIN PAGE — ESTIMATE / PRICING
+    ══════════════════════════════════════════ */
+    section#pricing .p-8                     { padding:18px !important; }
+
+    /* ══════════════════════════════════════════
+       MAIN PAGE — QUOTE FORM
+    ══════════════════════════════════════════ */
+    #quote .grid.grid-cols-2                 { grid-template-columns:1fr !important; }
+    #quote .rounded-\[2\.5rem\]              { padding:22px 18px !important; border-radius:18px !important; }
+
+    /* ══════════════════════════════════════════
+       SERVICE SUBPAGES (overlay)
+    ══════════════════════════════════════════ */
+
+    /* Hero: 55/45 → single col, image shown as strip below text */
+    .spc-hero-grid                           { grid-template-columns:1fr !important; min-height:auto !important; }
+    .spc-hero-txt-inner                      { padding:28px 20px 22px !important; }
+    .spc-hero-img-col                        { display:block !important; height:160px !important; position:relative !important; }
+    .spc-hero-txt-inner h1                   { font-size:clamp(1.4rem,5.5vw,1.9rem) !important; line-height:1.1 !important; }
+    .spc-hero-txt-inner p                    { font-size:0.875rem !important; }
+
+    /* Accordion: stacked */
+    .spc-acc-grid                            { grid-template-columns:1fr !important; gap:20px !important; }
+    .spc-acc-img-sticky                      { position:static !important; }
+
+    /* Why Choose Us: 1-col */
+    .spc-why-grid                            { grid-template-columns:1fr !important; gap:16px !important;
+                                               max-width:320px !important; margin-left:auto !important; margin-right:auto !important; }
+    /* Before/After sliders: 1-col */
+    .spc-sliders-grid                        { grid-template-columns:1fr !important; }
+
+    /* Service areas: 1-col */
+    .spc-areas-grid                          { grid-template-columns:1fr !important; }
+
+    /* FAQ: 1-col */
+    .spc-faq-grid                            { grid-template-columns:1fr !important; gap:0 !important; }
+
+    /* Section padding */
+    .spc-sec                                 { padding-top:36px !important; padding-bottom:36px !important; }
+
+    /* Estimate buttons: full-width stacked */
+    .spc-est-btns                            { flex-direction:column !important; align-items:stretch !important; gap:10px !important; }
+    .spc-est-btn                             { width:100% !important; justify-content:center !important; font-size:14px !important; padding:13px 20px !important; }
+
+    /* No double sticky border */
+    #svc-sticky-cta                          { display:none !important; }
+
+    /* Overlay nav: hide middle links */
+    .svc-ov-nav-links                        { display:none !important; }
   }
   /* Footer grid: 5-col → 3-col → 2-col → 1-col */
   @media(max-width:900px){
@@ -140,6 +189,8 @@
     #nav-desktop-links { display:none !important; }
     #nav-hamburger     { display:flex !important; }
   }
+  /* iOS Safari: 100vh includes hidden toolbar — use fill-available */
+  #hero-main { min-height:100vh; min-height:-webkit-fill-available; }
 </style>
 </head>
 <body class="bg-[#222222] font-sans text-white antialiased">
@@ -2170,7 +2221,7 @@ function openSvcPage(id) {
       '<div class="spc-sliders-grid" style="display:grid;grid-template-columns:'+(sliders.length>1?'1fr 1fr':'1fr')+';gap:14px;margin-top:36px;">'+
       sliders.map(function(sl,si){
         return '<div '+rv(si+1)+'>'+
-          '<div id="spc-sl-'+si+'" style="position:relative;height:280px;border-radius:10px;overflow:hidden;cursor:ew-resize;user-select:none;touch-action:pan-y;background:'+bg2+';border:1px solid '+bdr+';">'+
+          '<div id="spc-sl-'+si+'" style="position:relative;height:280px;border-radius:10px;overflow:hidden;cursor:ew-resize;user-select:none;touch-action:none;background:'+bg2+';border:1px solid '+bdr+';">'+
             '<img src="'+sl.before+'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" alt="Before" draggable="false"/>'+
             '<div class="spc-sl-after" style="position:absolute;inset:0;clip-path:inset(0 50% 0 0);">'+
               '<img src="'+sl.after+'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" alt="After" draggable="false"/>'+
